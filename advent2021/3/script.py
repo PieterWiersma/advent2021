@@ -37,13 +37,6 @@ def find_least_frequent_number(list_of_no):
         return 0
 
 
-def reverse_bin(input):
-    new_list = []
-    for item in input:
-        new_list.append((item - 1) * -1)
-    return new_list
-
-
 def solve_ass1(input):
     solution_bin1 = []
     solution_bin2 = []
@@ -58,14 +51,12 @@ def solve_ass1(input):
 
     #print('bin1: %s, bin2: %s, product: %s' %(bin1, bin2, bin1*bin2))
 
-    return ''.join([str(x) for x in solution_bin1]), ''.join([str(x) for x in solution_bin2])
-
-
+    return ''.join([str(x) for x in solution_bin1])
 
 
 def ass2_part1(input):
     for i in range(len(input[0])):
-        bin1, bin2 = solve_ass1(transform_input_ass1(input))
+        bin1 = solve_ass1(transform_input_ass1(input))
         input = [x for x in input if x[i] == bin1[i]]
         if len(input) == 1:
             return input
@@ -75,7 +66,7 @@ def ass2_part1(input):
 def ass2_part2(input):
     #breakpoint()
     for i in range(len(input[0])):
-        bin1, bin2 = solve_ass1(transform_input_ass1(input))
+        bin1 = solve_ass1(transform_input_ass1(input))
         input = [x for x in input if x[i] != bin1[i]]
         if len(input) == 1:
             print(input)
@@ -85,22 +76,8 @@ def ass2_part2(input):
 
 
 if __name__ == "__main__":
-    original_input = get_input('inputtest.txt')
-    original_input_copy = [x for x in original_input]
-    #input = transform_input_ass1(original_input)
-    #bin1, bin2 = solve_ass1(input)
-
-    x = ass2_part1(original_input)
-    y = ass2_part2(original_input_copy)
-    print(int(x[0],2))
-    print(int(y[0],2))
-    print(int(x[0],2) * int(y[0],2))
-
-
     original_input = get_input('input.txt')
     original_input_copy = [x for x in original_input]
-    #input = transform_input_ass1(original_input)
-    #bin1, bin2 = solve_ass1(input)
 
     x = ass2_part1(original_input)
     y = ass2_part2(original_input_copy)
